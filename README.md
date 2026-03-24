@@ -121,11 +121,20 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
   - `survival`
   - `timereg`
   - `survminer`
-
+## 코드 구성
+- `01_eda.R` : 데이터 구조 확인 및 기초 탐색적 분석
+- `02_km_curve.R` : Kaplan-Meier 생존곡선 시각화
+- `03_cox_modeling.R` : Cox proportional hazards model 적합 및 stepwise 선택
+- `04_diagnostics.R` : 로그선형성 및 비례위험 가정 진단
+- `05_final_model.R` : stratified Cox model 적합 및 최종 결과 확인
+- 
 ## 레포지토리 구성 예시
 ```bash
 ├── data/              # 원본 데이터
-├── scripts/           # EDA, KM curve, Cox model, diagnostic 코드
-├── outputs/           # survival plot, residual plot, 결과표
+├── `01_eda.R` : 데이터 구조 확인 및 기초 탐색적 분석
+├── `02_km_curve.R` : Kaplan-Meier 생존곡선 시각화
+├── `03_cox_modeling.R` : Cox proportional hazards model 적합 및 stepwise 선택
+├── `04_diagnostics.R` : 로그선형성 및 비례위험 가정 진단
+├── `05_final_model.R` : stratified Cox model 적합 및 최종 결과 확인
 ├── report/            # 프로젝트 보고서
 └── README.md
