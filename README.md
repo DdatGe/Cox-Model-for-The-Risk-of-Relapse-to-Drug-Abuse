@@ -61,18 +61,17 @@
 
 ## 모델 선택 과정
 KM curve 확인 결과 `use` 변수는 그룹 간 곡선이 많이 겹쳐 예측력이 낮을 가능성이 있었고,  
-이를 바탕으로 stepwise model selection을 수행했습니다. AIC 비교 결과 최종 후보모형은 아래와 같았습니다. :contentReference[oaicite:2]{index=2}
+이를 바탕으로 stepwise model selection을 수행했습니다. AIC 비교 결과 최종 후보모형은 아래와 같았습니다.
 
 - `step both`: treat + age + race + num + dep
 - `step back`: treat + age + race + num + dep
 - `step for`: treat + age + race + num + use + dep
 
-이 중 가장 작은 AIC를 보인 모형은 `treat + age + race + num + dep`였고, 이를 초기 선택 모형으로 채택했습니다. :contentReference[oaicite:3]{index=3}
+이 중 가장 작은 AIC를 보인 모형은 `treat + age + race + num + dep`였고, 이를 초기 선택 모형으로 채택했습니다.
 
 ## 진단 및 모델 개선
 초기 Cox 모형에 대해 로그선형성과 비례위험 가정을 점검한 결과,  
-Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나지 않았지만, `treat` 변수는 로그선형성 측면에서 문제가 확인되었습니다. :contentReference[oaicite:4]{index=4}
-
+Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나지 않았지만, `treat` 변수는 로그선형성 측면에서 문제가 확인되었습니다.
 이를 해결하기 위해 `treat` 변수를 기준으로 층화한 **stratified Cox model**을 다시 적합했습니다.  
 이후 진단 결과에서는
 
@@ -80,11 +79,11 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
 - Schoenfeld residual test의 p-value가 모두 0.05보다 커서
 - 비례위험 가정도 만족하는 것으로 확인되었습니다. :contentReference[oaicite:5]{index=5}
 
-즉, 최종적으로는 treatment 그룹에 따라 baseline hazard를 다르게 허용한 stratified Cox model이 더 적절한 모형으로 판단되었습니다. :contentReference[oaicite:6]{index=6}
+즉, 최종적으로는 treatment 그룹에 따라 baseline hazard를 다르게 허용한 stratified Cox model이 더 적절한 모형으로 판단되었습니다.
 
 ## 최종 모형
 최종 모형은 `treat`를 기준으로 층화한 stratified Cox proportional hazards model입니다.  
-모형은 다음과 같은 형태입니다. :contentReference[oaicite:7]{index=7}
+모형은 다음과 같은 형태입니다. 
 
 - strata: `treat`
 - covariates: `age`, `race`, `num`, `dep`
@@ -93,7 +92,7 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
 나이, 인종, 이전 치료 횟수, 우울 점수가 재발 위험에 미치는 효과를 추정했습니다.
 
 ## 주요 결과
-최종 stratified Cox model에서 유의하게 나타난 변수는 다음과 같습니다. :contentReference[oaicite:8]{index=8}
+최종 stratified Cox model에서 유의하게 나타난 변수는 다음과 같습니다.
 
 - **age**: 나이가 1살 증가할수록 hazard가 약 2.1% 감소  
   → 나이가 많을수록 재발 위험이 다소 낮아짐
@@ -108,7 +107,7 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
   → 우울 수준이 높을수록 재발 위험이 커짐
 
 즉, 이 프로젝트에서는 **이전 치료 경험과 우울 수준이 재발 위험을 높이는 방향으로 작용하고**,  
-반대로 **나이는 재발 위험을 낮추는 방향으로 작용**한다는 점을 확인했습니다. 또한 치료 기간 변수는 단순 공변량으로 넣기보다 **층화 변수로 처리하는 것이 더 타당**하다는 점을 확인했습니다. :contentReference[oaicite:9]{index=9}
+반대로 **나이는 재발 위험을 낮추는 방향으로 작용**한다는 점을 확인했습니다. 또한 치료 기간 변수는 단순 공변량으로 넣기보다 **층화 변수로 처리하는 것이 더 타당**하다는 점을 확인했습니다.
 
 
 ## 한계
