@@ -77,7 +77,7 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
 
 - 모든 공변량에 대해 로그선형성이 만족되었고
 - Schoenfeld residual test의 p-value가 모두 0.05보다 커서
-- 비례위험 가정도 만족하는 것으로 확인되었습니다. :contentReference[oaicite:5]{index=5}
+- 비례위험 가정도 만족하는 것으로 확인되었습니다.
 
 즉, 최종적으로는 treatment 그룹에 따라 baseline hazard를 다르게 허용한 stratified Cox model이 더 적절한 모형으로 판단되었습니다.
 
@@ -109,7 +109,6 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
 즉, 이 프로젝트에서는 **이전 치료 경험과 우울 수준이 재발 위험을 높이는 방향으로 작용하고**,  
 반대로 **나이는 재발 위험을 낮추는 방향으로 작용**한다는 점을 확인했습니다. 또한 치료 기간 변수는 단순 공변량으로 넣기보다 **층화 변수로 처리하는 것이 더 타당**하다는 점을 확인했습니다.
 
-
 ## 한계
 - 본 프로젝트는 특정 연구 데이터셋을 기반으로 한 분석으로, 결과를 모든 약물 중독 집단에 일반화하는 데에는 한계가 있습니다.
 - stepwise selection은 해석이 직관적이지만, 변수 선택의 안정성 측면에서는 한계가 있을 수 있습니다.
@@ -121,14 +120,9 @@ Schoenfeld residual test에서는 전체적으로 PH 가정 위배가 나타나�
   - `survival`
   - `timereg`
   - `survminer`
-## 코드 구성
-- `01_eda.R` : 데이터 구조 확인 및 기초 탐색적 분석
-- `02_km_curve.R` : Kaplan-Meier 생존곡선 시각화
-- `03_cox_modeling.R` : Cox proportional hazards model 적합 및 stepwise 선택
-- `04_diagnostics.R` : 로그선형성 및 비례위험 가정 진단
-- `05_final_model.R` : stratified Cox model 적합 및 최종 결과 확인
-- 
-## 레포지토리 구성 예시
+
+
+## 레포지토리 구성
 ```bash
 ├── data/              # 원본 데이터
 ├── `01_eda.R` : 데이터 구조 확인 및 기초 탐색적 분석
